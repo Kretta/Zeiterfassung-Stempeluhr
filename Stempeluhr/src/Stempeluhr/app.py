@@ -3,9 +3,21 @@ from toga.style import Pack
 from toga.style.pack import COLUMN, ROW
 from datetime import datetime
 from Stempeluhr.services.csv_handler import CSVHandler
-from Stempeluhr.utils.time_utils import get_current_time_str, get_weekday_str, format_timedelta
 
 CSV_FILE = r'C:\Users\blue_\OneDrive\Dokumente\Python\Zeiterfassung\stempelzeiten.csv'
+DEUTSCHE_WOCHENTAGE = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
+
+def get_current_time_str():
+    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+def get_weekday_str(date):
+    return DEUTSCHE_WOCHENTAGE[date.weekday()]
+
+def format_timedelta(td):
+    total_seconds = int(td.total_seconds())
+    hours, remainder = divmod(total_seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    return f"{hours:02}:{minutes:02}:{seconds:02}"
 
 class Stempeluhr(toga.App):
     def __init__(self, *args, **kwargs):
