@@ -3,7 +3,6 @@ import os
 from datetime import datetime, timedelta
 
 CSV_FILE = r'C:\Users\blue_\OneDrive\Dokumente\Python\Zeiterfassung\stempelzeiten.csv'
-DEUTSCHE_WOCHENTAGE = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
 
 class CSVHandler:
     def __init__(self, csv_file):
